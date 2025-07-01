@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places disponibles - Activités</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #226e93;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .update-info {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .activity-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .activity-id {
+            font-size: 12px;
+            color: #999;
+            font-family: monospace;
+            margin-bottom: 5px;
+        }
+        
+        .activity-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .places-info {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .places-disponibles {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .places-limitees {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .places-complet {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .iframe-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .iframe-section h2 {
+            color: #226e93;
+            margin-bottom: 20px;
+        }
+        
+        .iframe-section code {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .activity {
+            display: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .activity:target {
+            display: block !important;
+        }
+        
+        .activity:target ~ * {
+            display: none !important;
+        }
+        
+        body:has(.activity:target) .container {
+            display: none;
+        }
+        
+        .complet { color: #dc2626; }
+        .limite { color: #f59e0b; }
+        .disponible { color: #10b981; }
+        
+        @media (max-width: 768px) {
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+        <div id="id01" class="activity disponible">Nombre de places restantes : 4</div>
+    <div id="id02" class="activity disponible">Nombre de places restantes : 7</div>
+    <div id="id03" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id04" class="activity disponible">Nombre de places restantes : 6</div>
+    <div id="id05" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id06" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id07" class="activity disponible">Nombre de places restantes : 5</div>
+    <div id="id08" class="activity disponible">Nombre de places restantes : 6</div>
+    <div id="id09" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id10" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id11" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id12" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id13" class="activity limite">Nombre de places restantes : 3</div>
+    <div id="id14" class="activity limite">Nombre de places restantes : 3</div>
+    <div id="id15" class="activity limite">Nombre de places restantes : 1</div>
+    <div id="id16" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id17" class="activity disponible">Nombre de places restantes : 5</div>
+    <div id="id18" class="activity disponible">Nombre de places restantes : 11</div>
+    <div id="id19" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id20" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id21" class="activity disponible">Nombre de places restantes : 5</div>
+    <div id="id22" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id23" class="activity disponible">Nombre de places restantes : 6</div>
+    <div id="id24" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id26" class="activity disponible">Nombre de places restantes : 17</div>
+    <div id="id27" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id28" class="activity disponible">Nombre de places restantes : 9</div>
+    <div id="id29" class="activity limite">Nombre de places restantes : 3</div>
+    <div id="id30" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id31" class="activity limite">Nombre de places restantes : 3</div>
+    <div id="id32" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id33" class="activity disponible">Nombre de places restantes : 10</div>
+    <div id="id34" class="activity disponible">Nombre de places restantes : 5</div>
+    <div id="id35" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id36" class="activity disponible">Nombre de places restantes : 17</div>
+    <div id="id37" class="activity disponible">Nombre de places restantes : 15</div>
+    <div id="id38" class="activity complet">Nombre de places restantes : COMPLET</div>
+    <div id="id39" class="activity disponible">Nombre de places restantes : 6</div>
+    <div id="id40" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id41" class="activity disponible">Nombre de places restantes : 9</div>
+    <div id="id42" class="activity limite">Nombre de places restantes : 3</div>
+    <div id="id43" class="activity disponible">Nombre de places restantes : 10</div>
+    <div id="id44" class="activity disponible">Nombre de places restantes : 10</div>
+    <div id="id45" class="activity disponible">Nombre de places restantes : 9</div>
+    <div id="id46" class="activity disponible">Nombre de places restantes : 5</div>
+    <div id="id47" class="activity disponible">Nombre de places restantes : 7</div>
+    <div id="id48" class="activity disponible">Nombre de places restantes : 8</div>
+    <div id="id49" class="activity disponible">Nombre de places restantes : 10</div>
+    <div id="id50" class="activity disponible">Nombre de places restantes : 21</div>
+    <div id="id51" class="activity disponible">Nombre de places restantes : 13</div>
+
+    
+    <div class="container">
+        <div class="header">
+            <h1>État des places disponibles</h1>
+            <p class="update-info">
+                Dernière mise à jour : <span id="lastUpdate">01/07/2025 10:00</span>
+            </p>
+        </div>
+        
+        <div class="activities-grid" id="activitiesGrid">
+            
+        <div class="activity-card">
+            <div class="activity-id">id01</div>
+            <div class="activity-name">Anglais Enfants G1 MS-GS - MS-GS</div>
+            <div class="places-info places-disponibles">
+                4 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 15h45 - 16h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id02</div>
+            <div class="activity-name">Anglais Enfants G2 CP-CE1 - CP-CE1</div>
+            <div class="places-info places-disponibles">
+                7 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 14h30 - 15h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id03</div>
+            <div class="activity-name">Anglais Enfants G3 CE2-CM2 - CE2-CM2</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 17h00 - 18h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id04</div>
+            <div class="activity-name">Théâtre impro CP - CE2 - CP - CE2</div>
+            <div class="places-info places-disponibles">
+                6 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 16h30 - 17h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id05</div>
+            <div class="activity-name">Théâtre impro CE2 - CM2 - CE2 - CM2 </div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 17h30 - 18h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id06</div>
+            <div class="activity-name">Art Floral - Ado - Adulte</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Samedi 9h-11h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id07</div>
+            <div class="activity-name">Beaux Arts Ados - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                5 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Samedi 9h30-11h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id08</div>
+            <div class="activity-name">Beaux Arts Adultes - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                6 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 19h-21h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id09</div>
+            <div class="activity-name">Beaux Arts Enfant Ma 16h45 - CP-CE1</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 16h45-17h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id10</div>
+            <div class="activity-name">Beaux Arts Enfant Ma 17h45 - CE2-CM2</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 17h45-18h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id11</div>
+            <div class="activity-name">Beaux Arts Enfant Ven 16h45 - CP-CE1</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 16h45-17h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id12</div>
+            <div class="activity-name">Beaux Arts Enfant Ven 17h45 - CE2-CM2</div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 17h45-18h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id13</div>
+            <div class="activity-name">CAPOEIRA G1 CP-CE1-CE2 - CP-CE1</div>
+            <div class="places-info places-limitees">
+                3 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 16h45-17h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id14</div>
+            <div class="activity-name">CAPOEIRA G2 CM1-CM2  - CE2-CM2</div>
+            <div class="places-info places-limitees">
+                3 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 17h45-18h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id15</div>
+            <div class="activity-name">CAPOEIRA Ado Adulte - Ado - Adulte</div>
+            <div class="places-info places-limitees">
+                1 place
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 19h00 - 20h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id16</div>
+            <div class="activity-name">Couture - CE2-CM2</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 16h45-18h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id17</div>
+            <div class="activity-name">Couture - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                5 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 18h15-19h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id18</div>
+            <div class="activity-name">Danse Africaine Enfant G1 MS-GS - MS-GS</div>
+            <div class="places-info places-disponibles">
+                11 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 16h45-17h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id19</div>
+            <div class="activity-name">G1 Exp. Corporelle - PS-GS</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 16h45-17h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id20</div>
+            <div class="activity-name">G2 Easy-Dance - CP-CE1</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 17h30-18h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id21</div>
+            <div class="activity-name">G3 Dancefloor - CE2-CM2</div>
+            <div class="places-info places-disponibles">
+                5 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 18h15-19h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id22</div>
+            <div class="activity-name">G4 Speedance - Ado 6ème - 5ème</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 19h30-20h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id23</div>
+            <div class="activity-name">G5 Speedance - Ado 4ème - 3ème</div>
+            <div class="places-info places-disponibles">
+                6 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Vendredi 20h30-21h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id24</div>
+            <div class="activity-name">Eveil Musical G1 MS-GS - MS-GS</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 16h45-17h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id26</div>
+            <div class="activity-name">CAF J - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                17 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 20h-21h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id27</div>
+            <div class="activity-name">CAF M - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 19h-20h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id28</div>
+            <div class="activity-name">Cardio Training - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                9 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 20h-21h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id29</div>
+            <div class="activity-name">Pilates Débutant - Ado - Adulte</div>
+            <div class="places-info places-limitees">
+                3 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 19h-20h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id30</div>
+            <div class="activity-name">Equilibre Pilate Stretching Débutant - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 08h30 - 10h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id31</div>
+            <div class="activity-name">Equilibre Pilate Stretching Avancé - Ado - Adulte</div>
+            <div class="places-info places-limitees">
+                3 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 10h- 11h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id32</div>
+            <div class="activity-name">Baby Gym - MS-GS</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 16h45-17h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id33</div>
+            <div class="activity-name">Acrosport  - CP-CE1</div>
+            <div class="places-info places-disponibles">
+                10 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 10h30-11h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id34</div>
+            <div class="activity-name">Parcours Gymnique - PS-GS</div>
+            <div class="places-info places-disponibles">
+                5 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 9h30-10h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id35</div>
+            <div class="activity-name">HIP HOP CE1-CM2 - CE1-CM2</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 16h45-17h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id36</div>
+            <div class="activity-name">Marche Nordique Lundi - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                17 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 9h-11h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id37</div>
+            <div class="activity-name">Marche Nordique Mercredi - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                15 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 9h-11h</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id38</div>
+            <div class="activity-name">Sculpture en Argile - CE1-CM2</div>
+            <div class="places-info places-complet">
+                COMPLET
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 16h45-18h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id39</div>
+            <div class="activity-name">Sophrologie adulte - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                6 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 18h15 - 19h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id40</div>
+            <div class="activity-name">Sophrologie enfant - CE2 - CM2 </div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 17h45 - 18h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id41</div>
+            <div class="activity-name">YOGA Adultes G1 - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                9 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 18h-19h15</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id42</div>
+            <div class="activity-name">YOGA Adultes G2 - Ado - Adulte</div>
+            <div class="places-info places-limitees">
+                3 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 19h15-20h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id43</div>
+            <div class="activity-name">YOGA Adultes G3 - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                10 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 20h30-21h45</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id44</div>
+            <div class="activity-name">YOGA  sur chaise - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                10 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 09h30 - 10h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id45</div>
+            <div class="activity-name">YOGA Enfants G1 MS-GS - MS-GS</div>
+            <div class="places-info places-disponibles">
+                9 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 16h45-17h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id46</div>
+            <div class="activity-name">YOGA Enfants G2 CP-CM2 - CP-CM2</div>
+            <div class="places-info places-disponibles">
+                5 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Jeudi 17h45-18h30</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id47</div>
+            <div class="activity-name">Zumba G1 - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                7 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 18h00-19h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id48</div>
+            <div class="activity-name">Zumba G2 - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                8 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 19h00-20h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id49</div>
+            <div class="activity-name">Zumba G3 - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                10 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Lundi 20h00-21h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id50</div>
+            <div class="activity-name">Step tonique - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                21 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 18h15 - 19h00</div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-id">id51</div>
+            <div class="activity-name">Yoga Kundalini - Ado - Adulte</div>
+            <div class="places-info places-disponibles">
+                13 places
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 10px;">Mardi 18h30-20h</div>
+        </div>
+        </div>
+        
+        <div class="iframe-section">
+            <h2>📋 Utilisation dans AssoConnect</h2>
+            
+            <h3>Pour afficher une activité dans un iframe :</h3>
+            <div class="example-box">
+                <code>https://[votre-username].github.io/[votre-repo]/#id01</code>
+            </div>
+            
+            <h3>Exemples :</h3>
+            <div class="example-box">
+                <p><code>https://[votre-username].github.io/[votre-repo]/#id01</code></p>
+                <p><code>https://[votre-username].github.io/[votre-repo]/#id02</code></p>
+                <p><code>https://[votre-username].github.io/[votre-repo]/#id03</code></p>
+            </div>
+            
+            <h3>Taille recommandée pour l'iframe :</h3>
+            <div class="example-box">
+                <code>&lt;iframe src="..." width="350" height="50" frameborder="0"&gt;&lt;/iframe&gt;</code>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
