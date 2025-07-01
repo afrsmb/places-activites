@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Places disponibles - Activités</title>
+    
+    <!-- Empêcher la mise en cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="refresh" content="60">
     <style>
         * {
             margin: 0;
@@ -190,7 +196,7 @@
     </style>
 </head>
 <body>
-        <div id="id01" class="activity disponible"><div class="activity-text">4 places disponibles</div></div>
+        <div id="id01" class="activity limite"><div class="activity-text">2 places disponibles</div></div>
     <div id="id02" class="activity disponible"><div class="activity-text">7 places disponibles</div></div>
     <div id="id03" class="activity complet"><div class="activity-text">COMPLET</div></div>
     <div id="id04" class="activity disponible"><div class="activity-text">6 places disponibles</div></div>
@@ -246,7 +252,7 @@
         <div class="header">
             <h1>État des places disponibles</h1>
             <p class="update-info">
-                Dernière mise à jour : <span id="lastUpdate">01/07/2025 12:37</span>
+                Dernière mise à jour : <span id="lastUpdate">01/07/2025 12:45</span>
             </p>
         </div>
         
@@ -255,8 +261,8 @@
         <div class="activity-card">
             <div class="activity-id">id01</div>
             <div class="activity-name">Anglais Enfants G1 MS-GS - MS-GS</div>
-            <div class="places-info places-disponibles">
-                4 places
+            <div class="places-info places-limitees">
+                2 places
             </div>
             <div style="font-size: 14px; color: #666; margin-top: 10px;">Mercredi 15h45 - 16h45</div>
         </div>
@@ -659,19 +665,25 @@
             
             <h3>Pour afficher une activité dans un iframe :</h3>
             <div class="example-box">
-                <code>https://[votre-username].github.io/[votre-repo]/#id01</code>
+                <code>https://afrsmb.github.io/places-activites/#id01</code>
             </div>
             
             <h3>Exemples :</h3>
             <div class="example-box">
-                <p><code>https://[votre-username].github.io/[votre-repo]/#id01</code></p>
-                <p><code>https://[votre-username].github.io/[votre-repo]/#id02</code></p>
-                <p><code>https://[votre-username].github.io/[votre-repo]/#id03</code></p>
+                <p><code>https://afrsmb.github.io/places-activites/#id01</code></p>
+                <p><code>https://afrsmb.github.io/places-activites/#id02</code></p>
+                <p><code>https://afrsmb.github.io/places-activites/#id03</code></p>
             </div>
             
             <h3>Taille recommandée pour l'iframe :</h3>
             <div class="example-box">
                 <code>&lt;iframe src="..." width="350" height="50" frameborder="0"&gt;&lt;/iframe&gt;</code>
+            </div>
+            
+            <h3>ℹ️ Mise à jour automatique :</h3>
+            <div class="example-box">
+                <p>La page se recharge automatiquement toutes les minutes pour afficher les dernières données.</p>
+                <p>Pas besoin de Ctrl+F5, un simple F5 suffit maintenant !</p>
             </div>
         </div>
     </div>
