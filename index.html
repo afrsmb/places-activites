@@ -13,8 +13,10 @@
         
         body {
             font-family: 'Poppins', 'Roboto', Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: transparent;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         
         .container {
@@ -132,13 +134,19 @@
         
         .activity {
             display: none;
-            font-weight: bold;
-            font-size: 16px;
-            padding: 5px;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: transparent;
+            text-align: center;
         }
         
         .activity:target {
-            display: block !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
         }
         
         .activity:target ~ * {
@@ -149,9 +157,26 @@
             display: none;
         }
         
-        .complet { color: #dc2626; }
-        .limite { color: #f59e0b; }
-        .disponible { color: #10b981; }
+        .activity-text {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        
+        .complet .activity-text { 
+            background-color: #f8d7da; 
+            color: #721c24; 
+        }
+        .limite .activity-text { 
+            background-color: #fff3cd; 
+            color: #856404; 
+        }
+        .disponible .activity-text { 
+            background-color: #d4edda; 
+            color: #155724; 
+        }
         
         @media (max-width: 768px) {
             .activities-grid {
@@ -165,63 +190,63 @@
     </style>
 </head>
 <body>
-        <div id="id01" class="activity disponible"><div class="activity-text">Nombre de places restantes : 4</div></div>
-    <div id="id02" class="activity disponible"><div class="activity-text">Nombre de places restantes : 7</div></div>
-    <div id="id03" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id04" class="activity disponible"><div class="activity-text">Nombre de places restantes : 6</div></div>
-    <div id="id05" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id06" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id07" class="activity disponible"><div class="activity-text">Nombre de places restantes : 5</div></div>
-    <div id="id08" class="activity disponible"><div class="activity-text">Nombre de places restantes : 6</div></div>
-    <div id="id09" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id10" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id11" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id12" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id13" class="activity limite"><div class="activity-text">Nombre de places restantes : 3</div></div>
-    <div id="id14" class="activity limite"><div class="activity-text">Nombre de places restantes : 3</div></div>
-    <div id="id15" class="activity limite"><div class="activity-text">Nombre de places restantes : 1</div></div>
-    <div id="id16" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id17" class="activity disponible"><div class="activity-text">Nombre de places restantes : 5</div></div>
-    <div id="id18" class="activity disponible"><div class="activity-text">Nombre de places restantes : 11</div></div>
-    <div id="id19" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id20" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id21" class="activity disponible"><div class="activity-text">Nombre de places restantes : 5</div></div>
-    <div id="id22" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id23" class="activity disponible"><div class="activity-text">Nombre de places restantes : 6</div></div>
-    <div id="id24" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id26" class="activity disponible"><div class="activity-text">Nombre de places restantes : 17</div></div>
-    <div id="id27" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id28" class="activity disponible"><div class="activity-text">Nombre de places restantes : 9</div></div>
-    <div id="id29" class="activity limite"><div class="activity-text">Nombre de places restantes : 3</div></div>
-    <div id="id30" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id31" class="activity limite"><div class="activity-text">Nombre de places restantes : 3</div></div>
-    <div id="id32" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id33" class="activity disponible"><div class="activity-text">Nombre de places restantes : 10</div></div>
-    <div id="id34" class="activity disponible"><div class="activity-text">Nombre de places restantes : 5</div></div>
-    <div id="id35" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id36" class="activity disponible"><div class="activity-text">Nombre de places restantes : 17</div></div>
-    <div id="id37" class="activity disponible"><div class="activity-text">Nombre de places restantes : 15</div></div>
-    <div id="id38" class="activity complet"><div class="activity-text">Nombre de places restantes : COMPLET</div></div>
-    <div id="id39" class="activity disponible"><div class="activity-text">Nombre de places restantes : 6</div></div>
-    <div id="id40" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id41" class="activity disponible"><div class="activity-text">Nombre de places restantes : 9</div></div>
-    <div id="id42" class="activity limite"><div class="activity-text">Nombre de places restantes : 3</div></div>
-    <div id="id43" class="activity disponible"><div class="activity-text">Nombre de places restantes : 10</div></div>
-    <div id="id44" class="activity disponible"><div class="activity-text">Nombre de places restantes : 10</div></div>
-    <div id="id45" class="activity disponible"><div class="activity-text">Nombre de places restantes : 9</div></div>
-    <div id="id46" class="activity disponible"><div class="activity-text">Nombre de places restantes : 5</div></div>
-    <div id="id47" class="activity disponible"><div class="activity-text">Nombre de places restantes : 7</div></div>
-    <div id="id48" class="activity disponible"><div class="activity-text">Nombre de places restantes : 8</div></div>
-    <div id="id49" class="activity disponible"><div class="activity-text">Nombre de places restantes : 10</div></div>
-    <div id="id50" class="activity disponible"><div class="activity-text">Nombre de places restantes : 21</div></div>
-    <div id="id51" class="activity disponible"><div class="activity-text">Nombre de places restantes : 13</div></div>
+        <div id="id01" class="activity disponible"><div class="activity-text">4 places disponibles</div></div>
+    <div id="id02" class="activity disponible"><div class="activity-text">7 places disponibles</div></div>
+    <div id="id03" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id04" class="activity disponible"><div class="activity-text">6 places disponibles</div></div>
+    <div id="id05" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id06" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id07" class="activity disponible"><div class="activity-text">5 places disponibles</div></div>
+    <div id="id08" class="activity disponible"><div class="activity-text">6 places disponibles</div></div>
+    <div id="id09" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id10" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id11" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id12" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id13" class="activity limite"><div class="activity-text">3 places disponibles</div></div>
+    <div id="id14" class="activity limite"><div class="activity-text">3 places disponibles</div></div>
+    <div id="id15" class="activity limite"><div class="activity-text">1 place disponible</div></div>
+    <div id="id16" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id17" class="activity disponible"><div class="activity-text">5 places disponibles</div></div>
+    <div id="id18" class="activity disponible"><div class="activity-text">11 places disponibles</div></div>
+    <div id="id19" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id20" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id21" class="activity disponible"><div class="activity-text">5 places disponibles</div></div>
+    <div id="id22" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id23" class="activity disponible"><div class="activity-text">6 places disponibles</div></div>
+    <div id="id24" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id26" class="activity disponible"><div class="activity-text">17 places disponibles</div></div>
+    <div id="id27" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id28" class="activity disponible"><div class="activity-text">9 places disponibles</div></div>
+    <div id="id29" class="activity limite"><div class="activity-text">3 places disponibles</div></div>
+    <div id="id30" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id31" class="activity limite"><div class="activity-text">3 places disponibles</div></div>
+    <div id="id32" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id33" class="activity disponible"><div class="activity-text">10 places disponibles</div></div>
+    <div id="id34" class="activity disponible"><div class="activity-text">5 places disponibles</div></div>
+    <div id="id35" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id36" class="activity disponible"><div class="activity-text">17 places disponibles</div></div>
+    <div id="id37" class="activity disponible"><div class="activity-text">15 places disponibles</div></div>
+    <div id="id38" class="activity complet"><div class="activity-text">COMPLET</div></div>
+    <div id="id39" class="activity disponible"><div class="activity-text">6 places disponibles</div></div>
+    <div id="id40" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id41" class="activity disponible"><div class="activity-text">9 places disponibles</div></div>
+    <div id="id42" class="activity limite"><div class="activity-text">3 places disponibles</div></div>
+    <div id="id43" class="activity disponible"><div class="activity-text">10 places disponibles</div></div>
+    <div id="id44" class="activity disponible"><div class="activity-text">10 places disponibles</div></div>
+    <div id="id45" class="activity disponible"><div class="activity-text">9 places disponibles</div></div>
+    <div id="id46" class="activity disponible"><div class="activity-text">5 places disponibles</div></div>
+    <div id="id47" class="activity disponible"><div class="activity-text">7 places disponibles</div></div>
+    <div id="id48" class="activity disponible"><div class="activity-text">8 places disponibles</div></div>
+    <div id="id49" class="activity disponible"><div class="activity-text">10 places disponibles</div></div>
+    <div id="id50" class="activity disponible"><div class="activity-text">21 places disponibles</div></div>
+    <div id="id51" class="activity disponible"><div class="activity-text">13 places disponibles</div></div>
 
     
     <div class="container">
         <div class="header">
             <h1>État des places disponibles</h1>
             <p class="update-info">
-                Dernière mise à jour : <span id="lastUpdate">01/07/2025 11:25</span>
+                Dernière mise à jour : <span id="lastUpdate">01/07/2025 11:28</span>
             </p>
         </div>
         
